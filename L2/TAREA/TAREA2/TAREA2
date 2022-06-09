@@ -4,7 +4,7 @@
 
 using namespace std;
 
-string libros[39][2];
+string libros[39][3];
 
 void cargarLibros() {
     
@@ -107,23 +107,25 @@ int main(int argc, char const *argv[])
         for (int i = 0; i < 39; i++)
         {
             string libro = libros[i][1];
-            string autor =  libros[i][2];
             string libroEnminuscula = libro;
-            string autorEnminuscula = autor;
-            
-            //  transform(libroEnminuscula.begin(), libroEnminuscula.end(), libroEnminuscula.begin(), ::tolower);
-            transform(autorEnminuscula.begin(), autorEnminuscula.end(), autorEnminuscula.begin(), ::tolower);
-
+             // transformamos a minuscula los string buscar y libro
+            transform(libroEnminuscula.begin(), libroEnminuscula.end(), libroEnminuscula.begin(), ::tolower);
             transform(buscar.begin(), buscar.end(), buscar.begin(), ::tolower);
+	        
+		string autor =  libros[i][2];
+		string autorEnminuscula = autor;
+ 		// transformamos a minuscula los string buscar y autor
+ 		transform(autorEnminuscula.begin(), autorEnminuscula.end(), autorEnminuscula.begin(), ::tolower);
+		transform(buscar.begin(), buscar.end(), buscar.begin(), ::tolower);
+
+            if (libroEnminuscula.find(buscar) != string::npos|| autorEnminusculas.find(buscar) != string::npos) {
+	    }
+
+                 cout << "Libro encontrado: " << libro << endl<< endl;
+		 cout << "autor del libro: " << libro << endl<< endl;
 
 
-            if (libroEnminuscula.find(buscar) != string::npos) {
-
-                cout << "Libro encontrado: " << libro << endl;
-
-
-
-                cout << "Tambien te sugerimos estos libros: " << endl;
+                cout << "Tambien te sugerimos estos libros: " << endl<< endl;
 
                 int sugerencia1 = rand() % 38 + 1;
                 int sugerencia2 = rand() % 38 + 1;
